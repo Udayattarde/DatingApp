@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221016201426_InitialCreate")]
+    [Migration("20221017072637_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,8 +25,8 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UserName")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UserName")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
