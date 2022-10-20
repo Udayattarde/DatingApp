@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using API.Data;
+using API.Errors;
 using API.Extenions;
 using API.interfaces;
+using API.Middleware;
 using API.services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -48,12 +50,14 @@ namespace API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
-            }
+        //     if (env.IsDevelopment())
+        //     {
+        //         app.UseDeveloperExceptionPage();
+        //         app.UseSwagger();
+        //         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
+        //     }
+           //custom exception
+           app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
